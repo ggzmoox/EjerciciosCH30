@@ -10,7 +10,7 @@
 
 
   <body>
-    <main class="bg-dark text-light">
+    <main class="">
         <div class="container" >
             <div class="row justify-content-center align-items-center" style="height: 100vh;">
                 
@@ -18,46 +18,33 @@
                   <h3 class="text-warning text-center">Verificar Día Laborable o Fin de Semana</h3>
 
                         <!-- formulario -->
-                        <form class="row g-3 justify-content-center align-items-center" id="registerForm">
+                        <div class="row g-3 justify-content-center align-items-center">
 
-                                <div class="col-md-2">
-                                    <label for="day" class="form-label">Dia</label>
-                                    <input type="number" class="form-control" id="day" placeholder="13">
-                                </div>
+                              <div class="col-md-3">
+                                  <label for="day" class="form-label">Dia</label>
+                                  <input type="number" class="form-control" id="dia" placeholder="Día" min="1" max="31">
+                              </div>
 
-                                <div class="col-md-4">
+                              <div class="col-md-4">
                                     <label for="month" class="form-label">Mes</label>
-                                    <select id="month" class="form-select" aria-label="Default select example">
-                                        <option selected>Selecciona el mes</option>
-                                        <option value="1">Enero</option>
-                                        <option value="2">Febrero</option>
-                                        <option value="3">Abril</option>
-                                        <option value="3">Mayo</option>
-                                        <option value="3">Junio</option>
-                                        <option value="3">Julio</option>
-                                        <option value="3">Agosto</option>
-                                        <option value="3">Septiembre</option>
-                                        <option value="3">Octubre</option>
-                                        <option value="3">Noviembre</option>
-                                        <option value="3">Diciembre</option>
-                                    </select>
-                                </div>
+                                    <input type="number" class="form-control" id="mes" placeholder="Mes" min="1" max="12">
+                              </div>
 
-                                <div class="col-md-3">
-                                    <label for="year" class="form-label">Año</label>
-                                    <input type="number" class="form-control" id="year" placeholder="2023">
-                                </div>
-                                <button id="sendBtn" type="submit" class="btn btn-primary col-md-4 ">Verificar</button>
+                              <div class="col-md-3">
+                                  <label for="year" class="form-label">Año</label>
+                                  <input type="number" class="form-control" id="anio" placeholder="Año" min="1900" max="2099">
+                              </div>
+
+                                <button id="botonVerificar" type="submit" class="btn btn-primary col-md-4 ">Verificar</button>
                                 <p id="resultado" class="text-center"></p>
-                        </form>
+                              </div>
                     </div>
                 </div>
             </div>
         </div>        
     </main>
 
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-    <script src="/assets/js/practicaFecha.js"></script>
+    <script src="/assets/js/practicaFecha.js"></script> 
   </body>
 </html>
