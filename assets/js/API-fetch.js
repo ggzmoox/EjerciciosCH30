@@ -1,21 +1,25 @@
 
 const apiFetch = document.getElementById("apifetch");
+const btnClean = document.getElementById("btnClean");
+btnClean.disabled= true;
 
-const MAX_CACHE_TIME = 60000; // un minuto en milisegundos
+const cacheTime = 60000; // un minuto en milisegundos
 
 apiFetch.onclick = async () => {
     try {
         // Datos de ususario guardados previamente en formato json
         const savedUserData = localStorage.getItem("userData");
         // marca de tiempo en que se guardaron los datos
-        const savedTimestamp = localStorage.getItem("userDataTimestamp");
+        const savedTime = localStorage.getItem("userDataTime");
         // tiempo actual en milisegundos
         const currentTime = new Date().getTime();
+        apiFetch.disabled= true;
+        btnClean.disabled= false;
 
-        // se verifca si savedUserData y savedTmesStamp tienen valores, si tienen valosres significa que hay datos en el locl storage
-        if (savedUserData && savedTimestamp) {
-            // se compara si la diferencia entre el tiempo actual y la marca de tiempo almacenada es menor que MAX_CACHE_TIME, si es asi los datos no han expirado
-            if (currentTime - Number(savedTimestamp) < MAX_CACHE_TIME) {
+        // se verifca si savedUserData y savedTime tienen valores, si tienen valosres significa que hay datos en el locl storage
+        if (savedUserData && savedTime) {
+            // se compara si la diferencia entre el tiempo actual y la marca de tiempo almacenada es menor que cacheTime, si es asi los datos no han expirado
+            if (currentTime - Number(savedTime) < cacheTime) {
                 const parsedData = JSON.parse(savedUserData);
                 showData(parsedData);
                 return; // No es necesario realizar una nueva solicitud
@@ -30,7 +34,7 @@ apiFetch.onclick = async () => {
         // los nuevos datos se almacenan en el local storage
         localStorage.setItem("userData", JSON.stringify(response.data));
         // se almacena la marca de tiempo actual
-        localStorage.setItem("userDataTimestamp", currentTime.toString());
+        localStorage.setItem("userDataTime", currentTime.toString());
     } catch (error) {
         alert("Ha ocurrido un error.");
     }
@@ -40,11 +44,20 @@ apiFetch.onclick = async () => {
 
 const showData = (data) => {
     console.log(data);
-    let body = ''
+    let body = '';
     for (let i = 0; i < data.length; i++){
-        body += `<tr><td>${data[i].id}</td><td>${data[i].first_name}</td><td>${data[i].last_name}</td><td>${data[i].email}</td><td><img src="${data[i].avatar}" alt="Avatar"  class="imgRedonda" /></td></tr>`;
+        body += `<tr class="tableData"><td>${data[i].id}</td><td>${data[i].first_name}</td><td>${data[i].last_name}</td><td>${data[i].email}</td><td><img src="${data[i].avatar}" alt="Avatar"  class="imgRedonda" /></td></tr>`;
      }
      document.getElementById("data").innerHTML = body;
 
      localStorage.setItem("userData", JSON.stringify(data));
+}
+
+
+btnClean.onclick = () => {
+    let body = '';
+    document.getElementById("data").innerHTML = body; 
+    apiFetch.disabled= false;
+    btnClean.disabled= true;
+
 }
