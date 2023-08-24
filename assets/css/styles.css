@@ -3,3 +3,28 @@
     height:50px;
     border-radius:50px;
 }
+
+#fondo{
+    background-image: url("../img/backgroudAPI.jpg");
+    background-size: 100%;
+}
+
+#titulo{
+    font-size: 20px; 
+    transition: transform 0.3s ease; /* Agregar una transición suave */
+    transform-origin: center; /* Establecer el punto de origen de la transformación */
+}
+
+#titulo:hover{
+    transform: scale(1.2); /* Aumentar el tamaño en 20% */
+    color: yellow;
+    -webkit-text-stroke: 0.5px black;
+   
+}
+
+
+#tabla{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin-bottom: 8;
+    position: relative;
+}
