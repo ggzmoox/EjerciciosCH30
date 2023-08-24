@@ -1,3 +1,7 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech&family=Share+Tech+Mono&display=swap');
+
+
 .imgRedonda {
     width:50;
     height:50px;
@@ -6,6 +10,11 @@
 
 #fondo{
     background-image: url("../img/backgroudAPI.jpg");
+    background-size: 100%;
+}
+
+#index-main{
+    background-image: url("../img/indexbackground.jpeg");
     background-size: 100%;
 }
 
@@ -27,4 +36,11 @@
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     margin-bottom: 8;
     position: relative;
+}
+
+#index-title{
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 5px rgb(81, 255, 0);
+    font-size: 40px;
+    font-family:'Share Tech Mono', monospace;
 }
